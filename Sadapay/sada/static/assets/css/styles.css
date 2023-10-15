@@ -1,0 +1,21 @@
+.logo {
+  margin-top: 10px;
+}
+
+.btnMain {
+}
+
+#btnMain {
+  padding: 0px 23px;
+  font-size: 20px;
+  background: #E25822;
+  border-color: #E25822;
+  box-shadow: 1px 1px 3px #FF5800;
+}
+
+#btnMain1 {
+  padding: 10px 23px;
+  background: #FF5800;
+  border-style: none;
+}
+

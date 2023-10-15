@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="05"> -->
+    <title>Built-in Filters</title>
+</head>
+<body>
+<p>Rendered text date: "{{D|date:"l" }}"</p>
+{% comment "Optional note" %}
+    <p>Commented out text with {{ create_date|date:"c" }}</p>
+{% endcomment %}
+</pre>
+{% comment %} if Tag {% endcomment %}
+<pre>{% if name %}
+Number is: {{ name|capfirst }}
+{% endif %}
+</pre>
+<pre>{% if n %}Number is: {{ name|capfirst }}
+{% else %}no name available{% endif %}
+</pre>
+{% comment %} If tag with and operator {% endcomment %}
+<pre>
+{% if name and age  %}
+Your Name is {{name}} and Age is {{age}}
+{% else %}
+No name and age available
+{% endif %}
+</pre>
+{% comment %} if tag with == operator {% endcomment %}
+<pre>
+{% if age == 23 %}
+Your age is  {{age}}
+{% else %}
+try again
+{% endif %}
+</pre>
+{% comment %} if tag with == "string" {% endcomment %}
+<pre>
+{% if name == "muhammad Hashim" %}
+Your name is : {{name}}
+{% endif %}
+</pre>
+{% comment %} if tag with in operator {% endcomment %}
+<pre>
+{% if "Dj" in "Django" %}
+true it is present
+{% endif %}
+</pre>
+{% comment %} if tag with filter {% endcomment %}
+<pre>
+{% if name|length >= 14 %}
+You have lots of messages today!
+ {% endif %}
+</pre>
+{% comment %}  if tag with random text {% endcomment %}
+<p>
+{% lorem 50 w random %}
+</p>
+<p>
+    It is {% now "jS F Y H:i" %}
+</p>
+{% comment %} for loop {% endcomment %}
+{% for n in name %}
+<li>{{n}}</li>
+{% endfor %}
+{% comment %} regroup tag {% endcomment %}
+{% regroup cities by country as country_list %}
+<ul>
+{% for country in country_list %}
+    <li>{{ country.grouper }}
+    <ul>
+        {% for city in country.list %}
+          <li>{{ city.name }}: {{ city.population }}</li>
+        {% endfor %}
+    </ul>
+    </li>
+{% endfor %}
+</ul>
+{% comment %} cycle tag {% endcomment %}
+{% for o in list1 %}
+    <tr class="{% cycle 'row1' 'row2' %}">
+        ...
+    </tr>
+{% endfor %}
+{% comment %} resetcycle tag {% endcomment %}
+{% for coach in c %}
+    <h1>{{ coach.name }}</h1>
+    {% for athlete in coach.athletes%}
+        <p class="{% cycle 'odd' 'even' %}">{{ athlete.name }}</p>
+    {% endfor %}
+    {% resetcycle %}
+{% endfor %}
+</body>
+</html>
