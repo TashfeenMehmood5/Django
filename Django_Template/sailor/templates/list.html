@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<h2>User Registration</h2>
+    <div style="display: flex; flex-direction: row;">
+        <div style="width: 50%;">
+            <h3>Register New User</h3>
+            {% include 'user_registration.html' %}
+        </div>
+        <div style="width: 50%;">
+            <h3>Registered Users</h3>
+            <ul>
+                {% for user in users %}
+                    <li>{{ user.username }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

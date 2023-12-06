@@ -10,7 +10,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+  {% comment %} <!-- Favicons -->
   <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
@@ -456,10 +456,24 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            <form action="" method="post"> {% endcomment %}
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Register</button>
             </form>
-
+            <br>
+            <a href="{% url 'user_list' %}">View Registered Users</a>
+            
+            <h2>User Data</h2>
+            <ul>
+                {% for user in users %}
+                    <li>{{ user.username }} - {{ user.password }}</li>
+                {% endfor %}
+            </ul>
+            
+            </form>
+{% comment %} 
           </div>
 
         </div>
@@ -491,8 +505,8 @@
   <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
 
   <!-- Template Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script> {% endcomment %}
 
 </body>
 
-</html>
+</html> 

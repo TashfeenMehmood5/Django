@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock title %}
+{% load crispy_forms_tags %}
+{% block main%}
+<section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0"> 
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">User</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">User Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+              <li class="breadcrumb-item"><a href="{% url 'changepassword' %}">Change Password</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'logout' %}">Logout</a></li> 
+            </ol>
+          </nav>
+          <div class="card">
+            <div class="card-body">
+              <!-- Add your form for editing profile here -->
+              <!-- Example form using crispy forms -->
+              <form method="post" action="{% url 'edit_profile' %}">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock main %}
+
+
+
+
+
+
+
+
+
+
+
+
+    
